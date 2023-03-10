@@ -23,10 +23,9 @@ app.get("/balance/:address", (req, res) => {
 });
 
 app.post("/send", (req, res) => {
-  // TODO: Get a signature from the client-side application
-  // recover the public address from the signature
-
+  // destructure post request
   const { sender, recipient, amount, signature, recoveryBit } = req.body;
+  // Log it all to terminal to be sure
   console.log("Sender: ", sender);
   console.log("Recipient: ", recipient);
   console.log("Amount: ", amount);
@@ -46,7 +45,7 @@ app.post("/send", (req, res) => {
   // Hash message - message is composed of sender, recipient and amount
   const msgHash = hashMessage(sender + recipient + amount);
 
-  // recover the public key using passed in info
+  // recover the public key using data passed through request
   async function recoverKey(msgHash, signature, recoveryBit) {
     const publicKey = await secp.recoverPublicKey(msgHash, signature, recoveryBit);
     return publicKey;
