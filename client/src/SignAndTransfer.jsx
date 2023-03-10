@@ -85,15 +85,6 @@ function SignAndTransfer({ address, setBalance }) {
         ></input>
       </label>
 
-      <label>
-        Signature
-        <input
-          placeholder="Enter your Signature"
-          value={signature}
-          onChange={setValue(setSignature)}
-        ></input>
-      </label>
-
       <input type="submit" className="button" value="Transfer" />
     </form>
   );
