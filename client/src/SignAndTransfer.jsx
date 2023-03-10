@@ -41,7 +41,7 @@ function SignAndTransfer({ address, setBalance }) {
     try {
       const {
         data: { balance },
-      } = await server.post(`send`, { // send the above details to the server
+      } = await server.post(`send`, { // send it all over to the server
         sender: address,
         amount: parseInt(sendAmount),
         recipient,
